@@ -79,3 +79,14 @@ class ShapeFactory:
         if kind == "circle":
             return Circle(parameters["radius"])
         raise ValueError(f"Неизвестный тип фигуры: {kind}")
+
+
+def main() -> None:
+    book = Book("Мастер и Маргарита", "Михаил Булгаков")
+    print(book)
+    print("Название корректно:", Book.is_valid_title(book.title))
+    print("Площадь прямоугольника:", ShapeFactory.create("rectangle", width=4, height=5).area())
+
+
+if __name__ == "__main__":
+    main()
