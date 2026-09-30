@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from abc import ABC, abstractmethod
 from pathlib import Path
 
 
@@ -37,3 +38,32 @@ class TextFile:
     def append(self, text: str) -> None:
         with self.path.open("a", encoding="utf-8") as file:
             file.write(text)
+
+
+class Shape(ABC):
+    """Абстрактная фигура (повышенное задание №9)."""
+
+    @abstractmethod
+    def area(self) -> float:
+        """Вернуть площадь фигуры."""
+
+
+class Rectangle(Shape):
+    def __init__(self, width: float, height: float) -> None:
+        if width <= 0 or height <= 0:
+            raise ValueError("Стороны должны быть положительными")
+        self.width = width
+        self.height = height
+
+    def area(self) -> float:
+        return self.width * self.height
+
+
+class Circle(Shape):
+    def __init__(self, radius: float) -> None:
+        if radius <= 0:
+            raise ValueError("Радиус должен быть положительным")
+        self.radius = radius
+
+    def area(self) -> float:
+        return 3.141592653589793 * self.radius**2
