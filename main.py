@@ -67,3 +67,15 @@ class Circle(Shape):
 
     def area(self) -> float:
         return 3.141592653589793 * self.radius**2
+
+
+class ShapeFactory:
+    """Фабрика фигур (повышенное задание №2)."""
+
+    @staticmethod
+    def create(kind: str, **parameters: float) -> Shape:
+        if kind == "rectangle":
+            return Rectangle(parameters["width"], parameters["height"])
+        if kind == "circle":
+            return Circle(parameters["radius"])
+        raise ValueError(f"Неизвестный тип фигуры: {kind}")
