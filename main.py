@@ -10,5 +10,10 @@ class Book:
         self.title = title
         self.author = author
 
+    @staticmethod
+    def is_valid_title(title: str) -> bool:
+        """Проверить, что заголовок не пустой после удаления пробелов."""
+        return bool(title.strip())
+
     def __str__(self) -> str:
         return f"{self.title} — {self.author}"
